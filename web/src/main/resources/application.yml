@@ -1,0 +1,13 @@
+jdbc:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost/yuan?useUnicode=true&useSSL=false&characterEncoding=utf8
+  username: root
+  password: 111111
+  maxActive: 50
+  minIdle: 5
+  initialSize: 5
+server:
+  port: 8888
+#beetlsql:
+#  enabled: false
+
