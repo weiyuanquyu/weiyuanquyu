@@ -6,17 +6,19 @@ import org.springframework.web.bind.annotation.RestController;
 import yuan.web.base.BaseController;
 
 
-@RestController
+//@RestController
+@Controller
 public class LoginController extends BaseController {
 
-//    @RequestMapping("/")
-//    public String index(){
-//        return "index.html";
-//    }
-
     @RequestMapping("/")
-    String test() {
-        return "Hello World!";
+    public String index(String reqs){
+        return "index.html";
     }
+
+
+//    @RequestMapping("/")
+//    String test() {
+//        return "Hello World!";
+//    }
 
 }

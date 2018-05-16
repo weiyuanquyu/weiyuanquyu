@@ -2,6 +2,9 @@ package yuan.web.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
+import org.beetl.core.resource.ClasspathResourceLoader;
+import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
+import org.beetl.ext.spring.BeetlSpringViewResolver;
 import org.nutz.dao.impl.NutDao;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -92,24 +95,24 @@ public class AppConfig {
         return dao;
     }
 
-//    @Bean(name = "beetlConfig",initMethod = "init")
-//    public BeetlGroupUtilConfiguration getBeetlGroupUtilConfiguration(){
-//        BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
-//        try {
-//            ClasspathResourceLoader cploder = new ClasspathResourceLoader(AppConfig.class.getClassLoader(),"templates");
-//            beetlGroupUtilConfiguration.setResourceLoader(cploder);
-//            return beetlGroupUtilConfiguration;
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    @Bean(name = "beetlConfig",initMethod = "init")
+    public BeetlGroupUtilConfiguration getBeetlGroupUtilConfiguration(){
+        BeetlGroupUtilConfiguration beetlGroupUtilConfiguration = new BeetlGroupUtilConfiguration();
+        try {
+            ClasspathResourceLoader cploder = new ClasspathResourceLoader(AppConfig.class.getClassLoader(),"templates");
+            beetlGroupUtilConfiguration.setResourceLoader(cploder);
+            return beetlGroupUtilConfiguration;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-//    @Bean(name="beetlViewResolver")
-//    public BeetlSpringViewResolver getBeetlSpringViewResolver(@Qualifier("beetlConfig") BeetlGroupUtilConfiguration beetlGroupUtilConfiguration){
-//        BeetlSpringViewResolver viewResolver=new BeetlSpringViewResolver();
-//        viewResolver.setContentType("text/html;charset=UTF-8");
-//        viewResolver.setOrder(0);
-//        viewResolver.setConfig(beetlGroupUtilConfiguration);
-//        return viewResolver;
-//    }
+    @Bean(name="beetlViewResolver")
+    public BeetlSpringViewResolver getBeetlSpringViewResolver(@Qualifier("beetlConfig") BeetlGroupUtilConfiguration beetlGroupUtilConfiguration){
+        BeetlSpringViewResolver viewResolver=new BeetlSpringViewResolver();
+        viewResolver.setContentType("text/html;charset=UTF-8");
+        viewResolver.setOrder(0);
+        viewResolver.setConfig(beetlGroupUtilConfiguration);
+        return viewResolver;
+    }
 }
